@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeData Site - Seguridad de la Información</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>CyberSecurity <span>Seguridad de la Información</span></h2>
+        <ul id="menu">
+            <li><a href="#" class="nav-link" data-target="modulo1">1. Seguridad en la Gestión de Datos</a></li>
+            <li><a href="#" class="nav-link" data-target="modulo2">2. Técnicas de Borrado y Destrucción de Datos</a></li>
+            <li><a href="#" class="nav-link" data-target="modulo3">3. Técnicas de prevención de filtración de datos</a></li>
+            <li><a href="#" class="nav-link" data-target="modulo4">4. Privacidad de Datos</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        
+        <section id="inicio" class="tutorial-card active">
+            <header>
+                <span class="badge">Seguridad de la Información</span>
+                <h1>Panel de Seguridad en la Gestión de Datos</h1>
+                <p>Bienvenido a los módulos de Seguridad de la información. Aquí se te mostrarán algunas técnicas para blindar sistemas Linux y proteger la integridad de la información.</p>
+            </header>
+
+            <article class="step-content">
+                <h3>Contenidos:</h3>
+                <p>Esta página está diseñada para llevarte desde los fundamentos del acceso hasta la privacidad avanzada. Haz clic en cualquier módulo para comenzar:</p>
+
+                <div class="grid-options">
+                    <div class="option-card" onclick="navigateTo('modulo1')" style="cursor: pointer; border-left: 4px solid #3b82f6;">
+                        <h5>Módulo 1: Gestión y Acceso</h5>
+                        <p>Políticas de acceso (DAC, ACL, MAC) y auditoría de sistemas con Auditd.</p>
+                    </div>
+                    <div class="option-card" onclick="navigateTo('modulo2')" style="cursor: pointer; border-left: 4px solid #ef4444;">
+                        <h5>Módulo 2: Borrado Seguro</h5>
+                        <p>Destrucción lógica y física de datos en HDDs y SSDs.</p>
+                    </div>
+                    <div class="option-card" onclick="navigateTo('modulo3')" style="cursor: pointer; border-left: 4px solid #f59e0b;">
+                        <h5>Módulo 3: Prevención (DLP)</h5>
+                        <p>Filtrado de egreso de red y bloqueo de filtraciones físicas.</p>
+                    </div>
+                    <div class="option-card" onclick="navigateTo('modulo4')" style="cursor: pointer; border-left: 4px solid #8b5cf6;">
+                        <h5>Módulo 4: Privacidad</h5>
+                        <p>Anonimato, limpieza de metadatos y sandboxing de aplicaciones.</p>
+                    </div>
+                </div>
+            </article>
+
+            <footer>
+                <button class="btn-primary" onclick="navigateTo('modulo1')">Iniciar</button>
+            </footer>
+        </section>
+        
+        
+        <section id="modulo1" class="tutorial-card">
+            <header>
+                <span class="badge">Módulo 1</span>
+                
+                <h1>Seguridad en la Gestión de Datos</h1>
+                
+                <p style="font-weight: bold; color: #3b82f6;">Políticas de acceso y auditoría</p>
+            </header>
+
+            <article class="step-content">
+                <blockquote style="border-left: 4px solid #3b82f6; border-right: 4px solid #3b82f6; padding: 10px 20px; background: #001b36; margin-bottom: 25px; color: #e2e8f0;">
+                    La seguridad de la información en Linux no es un evento único, sino un proceso continuo de control y vigilancia para proteger la confidencialidad y disponibilidad.
+                </blockquote>
+                
+                <div class="info-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+            
+                   
+                    <div class="theory-column" style="flex: 1; min-width: 300px;">
+                        
+
+                        <h4>1. Niveles de Control de Acceso</h4>
+                        <p>Los controles de acceso en TI son fundamentales para proteger los activos digitales y físicos de una organización. Estos controles aseguran que solo las personas autorizadas puedan acceder a los recursos necesarios, minimizando el riesgo de acceso no autorizado y otros posibles incidentes de seguridad. En este artículo, se explican los diferentes tipos de controles de acceso (físicos, lógicos y administrativos), cómo se implementan y cómo se auditan para garantizar su efectividad.</p>
+                        <p>Para asegurar que solo las personas autorizadas vean los datos, implementamos tres capas:</p>
+                        <ul>
+                            <li><strong>DAC:</strong> Permisos básicos (Lectura, Escritura, Ejecución) asignados por el dueño del archivo.</li>
+                            <li><strong>ACL:</strong> Permisos extendidos para casos donde varios usuarios necesitan niveles de acceso distintos en un mismo archivo.</li>
+                            <li><strong>MAC:</strong> Seguridad de nivel gubernamental/empresarial donde el sistema (Kernel) decide quién accede a qué, independientemente del dueño.</li>
+                        </ul>
+
+                        <h4>2. Auditoría e Integridad</h4>
+                        <p>No basta con cerrar la puerta; debemos saber quién intentó abrirla. La integridad asegura que los datos no hayan sido alterados maliciosamente mediante firmas <strong>Hashes</strong>. Mientras que la auditoría permite hacer lo siguiente: </p>
+                        <ul>
+                            <li><strong></strong>Revisar los registros de acceso para detectar cualquier anomalía o intento de acceso no autorizado.</li>
+                            <li><strong></strong>Inspeccionar físicamente los sistemas de control de acceso para asegurarse de que están funcionando correctamente.</li>
+                            <li><strong></strong>Realizar pruebas de penetración para evaluar la robustez de los controles físicos.</li>
+                        </ul>
+                    </div>
+
+                    
+                    <div class="terminal-column" style="flex: 1; min-width: 300px;">
+                        <div class="code-block" style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 8px; border-left: 5px solid #007acc; font-family: 'Courier New', Courier, monospace;">
+                            <span style="color: #6a9955;"># --- Gestión de Permisos (DAC/ACL) ---</span><br>
+                            <span style="color: #569cd6;">chmod</span> 600 config.conf <span style="color: #6a9955;"># Solo dueño lee/escribe</span><br>
+                            <span style="color: #569cd6;">setfacl</span> -m u:analista:r datos.csv <span style="color: #6a9955;"># ACL para un tercero</span><br><br>
+
+                            <span style="color: #6a9955;"># --- Vigilancia del Sistema (Auditd) ---</span><br>
+                            <span style="color: #569cd6;">auditctl</span> -w /etc/shadow -p wa -k alerta_passwords<br>
+                            <span style="color: #569cd6;">ausearch</span> -k alerta_passwords <span style="color: #6a9955;"># Buscar eventos</span><br><br>
+
+                            <span style="color: #6a9955;"># --- Verificación de Integridad ---</span><br>
+                            <span style="color: #569cd6;">sha256sum</span> archivo_importante.zip
+                        </div>
+                        <p style="font-size: 0.85em; margin-top: 10px; font-style: italic;">
+                            * Ejecuta estos comandos como root o usando sudo para interactuar con el sistema.
+                        </p>
+                    </div>
+                </div>
+
+                <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+
+                <h4>Metodologías Críticas</h4>
+                <div class="grid-options">
+                    <div class="option-card" style="border-top: 4px solid #ffff00;">
+                        <h5>Mínimo Privilegio</h5>
+                        <p>Otorga solo los permisos estrictamente necesarios para la tarea.</p>
+                    </div>
+                    <div class="option-card" style="border-top: 4px solid #ff05c1;">
+                        <h5>No Repudio</h5>
+                        <p>Garantiza que un usuario no pueda negar haber realizado una acción gracias a los logs de auditoría.</p>
+                    </div>
+                </div>
+            </article>
+
+            <footer>
+                <button class="btn-secondary" disabled>Anterior</button>
+                <button class="btn-nav-home" onclick="navigateTo('inicio')">Regresar al Inicio</button>
+                <button class="btn-primary" onclick="navigateTo('modulo2')">Siguiente Módulo</button>
+            </footer>
+        </section>
+
+        
+        <section id="modulo2" class="tutorial-card">
+            <header>
+                <span class="badge">Módulo 2</span>
+               
+                <h1>Técnicas de Borrado y Destrucción de Datos</h1>
+                
+                <p style="font-weight: bold; color: #ef4444;">-Borrado seguro y destrucción física</p>
+            </header>
+
+            <article class="step-content">
+                <blockquote style="border-left: 4px solid #ef4444; border-right: 4px solid #ef4444; padding: 10px 20px; background: #001020; margin-bottom: 25px; color: #e2e8f0;">
+                    En seguridad, eliminar no es destruir. Mientras el comando <code>rm</code> solo quita el puntero, la sanitización asegura que los bits sean ilegibles. El borrado y destrucción de datos garantiza la eliminación irrecuperable de información confidencial, utilizando técnicas como la sobrescritura (software), desmagnetización (física) o destrucción física del soporte. Estas medidas previenen el robo de identidad, fugas de información y aseguran el cumplimiento de normativas como el RGPD.
+                </blockquote>
+
+                <!-- Contenedor de dos columnas -->
+                <div class="info-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+            
+                    <!-- Columna Izquierda -->
+                    <div class="theory-column" style="flex: 1.2; min-width: 300px;">
+                        <h4>Sanitización de Software (Tipos de Discos)</h4>
+                        <p>Dependiendo del hardware, la técnica de borrado cambia drásticamente:</p>
+                        <ul>
+                            <li><strong>Discos Magnéticos (HDD):</strong> Se utiliza la sobreescritura múltiple con patrones aleatorios.</li>
+                            <li><strong>Discos de Estado Sólido (SSD):</strong> La sobreescritura daña la vida útil y no garantiza el borrado. Se usa el comando <code>TRIM</code> o <code>blkdiscard</code>.</li>
+                        </ul>
+                        <p>A diferencia del borrado lógico (que borra punteros o sobrescribe), la destrucción física inutiliza el dispositivo por completo.</p>
+                        <p>La destrucción física puede ser propensa al error humano si no se realiza bajo protocolos estrictos, por lo que a menudo se requiere la certificación de empresas especializadas.</p>
+                        <p>Las unidades SSD son más difíciles de destruir que los discos duros tradicionales, requiriendo trituración en partículas más pequeñas para asegurar la eliminación de datos, según.</p>
+
+                        <p style="font-weight: bold; color: #ef4444;">-Remanencia en Memoria (RAM y Swap)</p>
+                        <p>La remanencia de memoria es la capacidad de ciertos sistemas de almacenamiento (como en PLCs o discos duros) para conservar datos incluso después de apagar el equipo o quitarle la energía. A diferencia de la memoria volátil, asegura que variables críticas, configuraciones o archivos no se borren, siendo fundamental para la continuidad de procesos industriales y la seguridad de la información.</p>
+                    </div>
+
+                    <!-- Columna Derecha-->
+                    <div class="terminal-column" style="flex: 0.8; min-width: 300px;">
+                        <div class="code-block" style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 8px; border-left: 5px solid #ef4444; font-family: 'Courier New', Courier, monospace; font-size: 0.9em;">
+                            <span style="color: #6a9955;"># --- Borrado en HDD ---</span><br>
+                            <span style="color: #569cd6;">shred</span> -u -n 3 secreto.txt<br><br>
+
+                            <span style="color: #6a9955;"># --- Sanitización de SSD ---</span><br>
+                            <span style="color: #569cd6;">sudo blkdiscard</span> /dev/sdb1<br><br>
+
+                            <span style="color: #6a9955;"># --- Limpieza de RAM/Swap ---</span><br>
+                            <span style="color: #569cd6;">sudo swapoff</span> -a<br>
+                            <span style="color: #569cd6;">sdmem</span> -f -ll<br>
+                            <span style="color: #569cd6;">sudo swapon</span> -a
+                        </div>
+                        <p style="font-size: 0.85em; margin-top: 10px; font-style: italic;">
+                            <strong>Aviso:</strong> <code>blkdiscard</code> elimina datos instantáneamente a nivel de hardware.
+                        </p>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 30px;">Métodos de Destrucción Física</h4>
+                <div class="grid-options">
+                    <div class="option-card" style="border-top: 4px solid #ef4444;">
+                        <h5>Trituración Mecánica</h5>
+                        <p>Reducción del soporte a partículas de milímetros para impedir reconstrucción forense.</p>
+                    </div>
+                    <div class="option-card" style="border-top: 4px solid #f59e0b;">
+                        <h5>Desmagnetización</h5>
+                        <p>Exposición de HDDs a campos magnéticos potentes para neutralizar los platos.</p>
+                    </div>
+                    <div class="option-card" style="border-top: 4px solid #10b981;">
+                        <h5>Incineración</h5>
+                        <p>Destrucción térmica total, aplicada bajo normativas de residuos electrónicos.</p>
+                    </div>
+                    <div class="option-card" style="border-top: 4px solid #4310b9;">
+                        <h5>Perforación/Deformación</h5>
+                        <p>Se perfora el disco duro con una prensa hidráulica o un taladro industrial, dañando los platos magnéticos donde se guarda la información.</p>
+                    </div>
+                </div>
+            </article>
+
+            <footer>
+                <button class="btn-secondary" onclick="navigateTo('modulo1')">Anterior</button>
+                <button class="btn-nav-home" onclick="navigateTo('inicio')">Regresar al Inicio</button>
+                <button class="btn-primary" onclick="navigateTo('modulo3')">Siguiente Módulo</button>
+            </footer>
+        </section>
+
+       
+        <section id="modulo3" class="tutorial-card">
+            <header>
+                <span class="badge">Módulo 3</span>
+             
+                <h1>Técnicas de prevención de filtración de datos</h1>
+              
+                <p style="font-weight: bold; color: #f59e0b;">Prevención de Filtración de Datos (DLP)</p>
+            </header>
+
+            <article class="step-content">
+                <blockquote style="border-left: 4px solid #f59e0b; border-right: 4px solid #f59e0b; padding: 10px 20px; background: #001020; margin-bottom: 25px; color: #e2e8f0;">
+                    El DLP (Data Loss Prevention) en Linux se centra en blindar los puntos de salida para evitar que la información sensible sea extraída por actores maliciosos o errores accidentales.
+                </blockquote>
+                
+                <!-- Contenedor de dos columnas -->
+                <div class="info-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+            
+                    <!-- Columna Izquierda-->
+                    <div class="theory-column" style="flex: 1.1; min-width: 300px;">
+                        <h4>1. Descubrimiento de Datos (Data Discovery)</h4>
+                        <p>No se puede proteger lo que no se sabe que existe. El primer paso es auditar el sistema en busca de patrones sensibles (PII, llaves de API, tarjetas) y permisos de archivos excesivamente permisivos.</p>
+
+                        <h4>2. Control de Egreso y Red</h4>
+                        <p>Aplicamos la política <strong>Default Deny</strong>. Un servidor seguro solo debe comunicarse con los destinos estrictamente necesarios para su función, bloqueando cualquier otro intento de conexión saliente.</p>
+
+                        <h4>3. Restricción de Medios Físicos</h4>
+                        <p>El "Air-gap" o bloqueo físico impide que se extraigan datos mediante dispositivos USB. Esto se logra inhabilitando los módulos del kernel encargados del almacenamiento masivo.</p>
+                        
+                        <h4>4. Actualizaciones y Parches</h4>
+                        <p>Mantener el kernel y el software actualizado para corregir vulnerabilidades.</p>
+
+                        <h4>5. Gestión de Usuarios</h4>
+                        <p>Limitar privilegios de root, usar sudo, y gestionar contraseñas seguras con pam_cracklib.</p>
+
+                        <h4>6. Cifrado de Datos</h4>
+                        <p>Utilizar tecnologías de cifrado para proteger la información en reposo. Usar GnuPG (GPG) para archivos confidenciales.</p>
+
+                        <h4>7. Seguridad de Red</h4>
+                        <p>Implementar firewalls como iptables o ufw para controlar tráfico, y proteger contra fuerza bruta con Fail2ban.</p>
+
+                        <h4>8. Refuerzo del Sistema (Hardening)</h4>
+                        <p>Activar SELinux (Security-Enhanced Linux) o AppArmor para control de acceso obligatorio.</p>
+
+                        <h4>9. Auditoría y Monitoreo</h4>
+                        <p>Revisar registros del sistema regularmente para detectar accesos no autorizados.</p>
+                    </div>
+
+                    <!-- Columna Derecha-->
+                    <div class="terminal-column" style="flex: 0.9; min-width: 300px;">
+                        <div class="code-block" style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 8px; border-left: 5px solid #f59e0b; font-family: 'Courier New', Courier, monospace; font-size: 0.85em;">
+                            <span style="color: #6a9955;"># --- Búsqueda de Patrones Sensibles ---</span><br>
+                            <span style="color: #569cd6;">grep</span> -rE <span style="color: #ce9178;">"[0-9]{4}-[0-9]{4}-[0-9]{4}"</span> /home/<br>
+                            <span style="color: #569cd6;">find</span> /data -type f -perm /o+r <span style="color: #6a9955;"># Fugas internas</span><br><br>
+
+                            <span style="color: #6a9955;"># --- Firewall de Egreso (Iptables) ---</span><br>
+                            <span style="color: #569cd6;">sudo iptables</span> -A OUTPUT -p tcp --dport 443 -j ACCEPT<br>
+                            <span style="color: #569cd6;">sudo iptables</span> -P OUTPUT DROP <span style="color: #6a9955;"># Bloqueo total</span><br><br>
+
+                            <span style="color: #6a9955;"># --- Bloqueo de Hardware USB ---</span><br>
+                            <span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">"blacklist usb-storage"</span> | <span style="color: #569cd6;">sudo tee</span> /etc/modprobe.d/block-usb.conf
+                        </div>
+                        <p style="font-size: 0.85em; margin-top: 10px; font-style: italic;">
+                            Nota: El bloqueo de USB requiere un reinicio o descargar el módulo manualmente.
+                        </p>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 30px;">Metodologías de Protección Robusta</h4>
+                <div class="grid-options">
+                    <div class="option-card" style="border-top: 4px solid #10b981;">
+                        <h5>Defensa en Profundidad</h5>
+                        <p>Combina Cifrado (LUKS), RBAC y Monitoreo para que un solo fallo no exponga todo el sistema.</p>
+                    </div>
+                    <div class="option-card" style="border-top: 4px solid #3b82f6;">
+                        <h5>Zero Trust (Confianza Cero)</h5>
+                        <p>Nunca confiar, siempre verificar. Cada flujo de datos debe ser autenticado, incluso si es interno.</p>
+                    </div>
+                    <div class="option-card" style="border-top: 4px solid #8b5cf6;">
+                        <h5>Data Masking</h5>
+                        <p>Sustitución de datos reales por ficticios en entornos de desarrollo para mitigar riesgos de exposición.</p>
+                    </div>
+                </div>
+            </article>
+
+            <footer>
+                <button class="btn-secondary" onclick="navigateTo('modulo2')">Anterior</button>
+                <button class="btn-nav-home" onclick="navigateTo('inicio')">Regresar al Inicio</button>
+                <button class="btn-primary" onclick="navigateTo('modulo4')">Siguiente Módulo</button>
+            </footer>
+        </section>
+        
+       
+        <section id="modulo4" class="tutorial-card">
+            <header>
+                <span class="badge">Módulo 4</span>
+             
+                <h1>Privacidad de Datos</h1>
+               
+                <p style="font-weight: bold; color: #8b5cf6;">Privacidad y Anonimato</p>
+            </header>
+
+            <article class="step-content">
+                <blockquote style="border-left: 4px solid #8b5cf6; border-right: 4px solid #8b5cf6; padding: 10px 20px; background: #001020; margin-bottom: 25px; color: #e2e8f0;">
+                Mientras que la seguridad se enfoca en bloquear accesos no autorizados, la <strong>privacidad</strong> garantiza que, si los datos son observados o revelados, estos no se puedan vincular o asociarse a tu identidad real.
+                </blockquote>
+                <!-- Contenedor de dos columnas -->
+                <div class="info-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+            
+                    <!-- Columna Izquierda-->
+                    <div class="theory-column" style="flex: 1.1; min-width: 300px;">
+                        <h4>1. Ofuscación de Identidad</h4>
+                        <p>La red puede delatarte mediante huellas persistentes. Cambiar la dirección MAC y enrutar el tráfico a través de capas (Tor) rompe el rastreo geográfico y de hardware.</p>
+
+                        <h4>2. Higiene de Metadatos</h4>
+                        <p>Los archivos contienen información oculta (EXIF, GPS, autor). La sanitización de metadatos es un paso obligatorio antes de compartir cualquier documento o imagen.</p>
+
+                        <h4>3. Sandboxing (Aislamiento)</h4>
+                        <p>El aislamiento de aplicaciones limita lo que un programa puede "ver" de tu sistema, evitando que la telemetría acceda a tus archivos personales o variables de entorno.</p>
+
+                        <p style="font-weight: bold; color: #ffffff;">Aspectos clave de la privacidad digital:</p>
+                        <ul>
+                            <li><strong>Derecho a controlar datos:</strong> Se utiliza la sobreescritura múltiple con patrones aleatorios.</li>
+                            <li><strong>Huella Digital:</strong> Todo rastro que dejas en la red puede registrarse y usarse, creando un perfil del usuario.</li>
+                            <li><strong>Riesgos: </strong> Robo de identidad, suplantación, seguimiento comercial y violación de la intimidad.</li>
+                            <li><strong>Protección:</strong> Uso de contraseñas seguras, verificación en dos pasos, cifrado y configuración de privacidad en redes sociales</li>
+                        </ul>
+                    
+                    
+                    </div>
+
+                    <!-- Columna Derecha-->
+                    <div class="terminal-column" style="flex: 0.9; min-width: 300px;">
+                        <div class="code-block" style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 8px; border-left: 5px solid #8b5cf6; font-family: 'Courier New', Courier, monospace; font-size: 0.85em;">
+                            <span style="color: #6a9955;"># --- Ofuscación de Red ---</span><br>
+                            <span style="color: #569cd6;">sudo macchanger</span> -r eth0 <span style="color: #6a9955;"># MAC aleatoria</span><br>
+                            <span style="color: #569cd6;">torsocks</span> wget https://sitio.com <span style="color: #6a9955;"># Tráfico vía Tor</span><br><br>
+
+                            <span style="color: #6a9955;"># --- Sanitización de Archivos ---</span><br>
+                            <span style="color: #569cd6;">mat2</span> imagen_con_gps.jpg <span style="color: #6a9955;"># Limpiar metadatos</span><br><br>
+
+                            <span style="color: #6a9955;"># --- Aislamiento de Procesos ---</span><br>
+                            <span style="color: #569cd6;">firejail</span> --private firefox <span style="color: #6a9955;"># Entorno efímero</span>
+                        </div>
+                        <p style="font-size: 0.85em; margin-top: 10px; font-style: italic;">
+                            * <code>firejail</code> crea un sistema de archivos temporal que se destruye al cerrar la app.
+                        </p>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 30px;">Metodologías de Privacidad</h4>
+                <div class="grid-options">
+                    
+                    <div class="option-card" style="border-top: 4px solid #ff006f;">
+                        <h5>Compartimentación</h5>
+                        <p>Uso de máquinas virtuales para separar la identidad confidencial de la del ocio.</p>
+                    </div>
+                    
+                    <div class="option-card" style="border-top: 4px solid #8b5cf6;">
+                        <h5>Minimización</h5>
+                        <p>Reducción de logs persistentes y limpieza automática del directorio <code>/tmp</code> en cada inicio.</p>
+                    </div>
+                    
+                    <div class="option-card" style="border-top: 4px solid #ff8a54;">
+                        <h5>Anti-Forensics</h5>
+                        <p>Desactivación de volcados de memoria (core dumps) para proteger llaves de cifrado en RAM.</p>
+                    </div>
+                    
+                    <div class="option-card" style="border-top: 4px solid #cfffab;">
+                        <h5>Navegación Segura</h5>
+                        <p>Usa redes privadas virtuales (VPN) y aplicaciones de mensajería con encriptación de extremo a extremo.</p>
+                    </div>
+
+                    <div class="option-card" style="border-top: 4px solid #ffffff;">
+                        <h5>Contraseñas fuertes</h5>
+                        <p>Usa contraseñas distintas y complejas para cada cuenta.</p>
+                    </div>
+
+                    <div class="option-card" style="border-top: 4px solid #fffb00;">
+                        <h5>Actualiza sistemas</h5>
+                        <p>Mantén tus dispositivos y aplicaciones actualizados para cerrar brechas de seguridad.</p>
+                    </div>
+
+                    <div class="option-card" style="border-top: 4px solid #008cff;">
+                        <h5>Cuidar la información que se comparte</h5>
+                        <p>Evita compartir información sensible, privada o datos bancarios, especialmente en espacios donde la información es de facil acceso, como lo son las redes sociales.</p>
+                    </div>
+                </div>
+            </article>
+
+            <footer>
+                <button class="btn-secondary" onclick="navigateTo('modulo3')">Anterior</button>
+                <button class="btn-primary" onclick="finalizarCurso()">Finalizar Modulo</button>
+            </footer>
+        </section>
+
+    <!-- Enlace al JS externo -->
+    <script src="script.js"></script>
+</body>
+</html>
